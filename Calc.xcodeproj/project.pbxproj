@@ -23,6 +23,7 @@
 		09ED76D21624C121003DB82D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09ED76AD1624C120003DB82D /* Foundation.framework */; };
 		09ED76DA1624C121003DB82D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 09ED76D81624C121003DB82D /* InfoPlist.strings */; };
 		09ED76DD1624C121003DB82D /* CalcTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 09ED76DC1624C121003DB82D /* CalcTests.m */; };
+		09ED77001625EE8F003DB82D /* CalcModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 09ED76FF1625EE8F003DB82D /* CalcModel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +59,8 @@
 		09ED76D91624C121003DB82D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		09ED76DB1624C121003DB82D /* CalcTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CalcTests.h; sourceTree = "<group>"; };
 		09ED76DC1624C121003DB82D /* CalcTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CalcTests.m; sourceTree = "<group>"; };
+		09ED76FE1625EE8F003DB82D /* CalcModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalcModel.h; sourceTree = "<group>"; };
+		09ED76FF1625EE8F003DB82D /* CalcModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalcModel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +90,8 @@
 		09ED769C1624C120003DB82D = {
 			isa = PBXGroup;
 			children = (
+				09ED76FE1625EE8F003DB82D /* CalcModel.h */,
+				09ED76FF1625EE8F003DB82D /* CalcModel.m */,
 				09ED76B11624C120003DB82D /* Calc */,
 				09ED76D51624C121003DB82D /* CalcTests */,
 				09ED76AA1624C120003DB82D /* Frameworks */,
@@ -170,6 +175,7 @@
 				09ED76A31624C120003DB82D /* Sources */,
 				09ED76A41624C120003DB82D /* Frameworks */,
 				09ED76A51624C120003DB82D /* Resources */,
+				50524F424C454D533F /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -264,6 +270,19 @@
 			shellPath = /bin/sh;
 			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
 		};
+		50524F424C454D533F /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "export CODESIGN_ALLOCATE=/Library/JailCoder/codesign_allocate\nif [ \"${PLATFORM_NAME}\" == \"iphoneos\" ]; then\n/Library/JailCoder/Entitlements/Entitlements.py \"my.company.${PROJECT_NAME}\" \"${BUILT_PRODUCTS_DIR}/${WRAPPER_NAME}/${PROJECT_NAME}.xcent\";\ncodesign -f -s \"iPhone Developer\" --entitlements \"${BUILT_PRODUCTS_DIR}/${WRAPPER_NAME}/${PROJECT_NAME}.xcent\" \"${BUILT_PRODUCTS_DIR}/${WRAPPER_NAME}/\"\nfi";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -274,6 +293,7 @@
 				09ED76B81624C121003DB82D /* main.m in Sources */,
 				09ED76BC1624C121003DB82D /* CalcAppDelegate.m in Sources */,
 				09ED76C81624C121003DB82D /* CalcViewController.m in Sources */,
+				09ED77001625EE8F003DB82D /* CalcModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -332,7 +352,7 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -345,7 +365,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 			};
@@ -360,13 +380,13 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -448,6 +468,7 @@
 				09ED76E21624C121003DB82D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		09ED76E31624C121003DB82D /* Build configuration list for PBXNativeTarget "CalcTests" */ = {
 			isa = XCConfigurationList;
@@ -456,6 +477,7 @@
 				09ED76E51624C121003DB82D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

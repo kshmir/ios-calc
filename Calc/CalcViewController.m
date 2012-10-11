@@ -8,22 +8,40 @@
 
 #import "CalcViewController.h"
 
-@interface CalcViewController ()
-
-@end
+#import "CalcModel.h"
 
 @implementation CalcViewController
 
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+@synthesize display = _display;
+@synthesize calculator = _calculator;
+
+- (IBAction)numberClick:(UIButton *)sender {
+    NSInteger num = [sender.currentTitle integerValue];
+    [self.calculator addDigit:num];
+    [self updateDisplay];
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)updateDisplay {
+    [self.display setText:[NSString stringWithFormat:@"%d", self.calculator.inputDisplay]];
 }
 
+- (IBAction)setOperationBtn:(UIButton *)sender {
+    enum CalcOperand operand;
+    if ([sender.currentTitle isEqual:@"+"]) { operand = plus; }
+    if ([sender.currentTitle isEqual:@"-"]) { operand = minus; }
+    if ([sender.currentTitle isEqual:@"/"]) { operand = division; }
+    if ([sender.currentTitle isEqual:@"*"]) { operand = product; }
+    [self.calculator addOperation:operand];
+    [self updateDisplay];
+}
+
+- (IBAction)submitBtn:(UIButton *)obj {
+    [self.calculator obtainResult];
+    [self updateDisplay];
+}
+
+- (void)viewDidUnload {
+    [self setCalculator:nil];
+    [super viewDidUnload];
+}
 @end

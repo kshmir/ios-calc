@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "-[CalcTests testAddDigit]:CalcTests.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "[model valueForKey:@&quot;_leftInput&quot;]">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>

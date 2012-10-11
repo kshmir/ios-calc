@@ -9,5 +9,11 @@
 #import <SenTestingKit/SenTestingKit.h>
 
 @interface CalcTests : SenTestCase
-
+- (void) testEmptyCalculator;
+- (void) testAddDigit;
+- (void) testAddDigitAndSetOperator;
+- (void) testAddDigitAndSetOperatorAndAddAnotherDigit;
+- (void) testFullLogicFlow;
+- (void) testClear;
+- (void) testFullLogicFlowTwice;
 @end

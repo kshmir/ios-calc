@@ -8,6 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
+#import "CalcModel.h"
+
 @interface CalcViewController : UIViewController
+
+@property (strong, nonatomic) IBOutlet UILabel * display;
+@property (strong, nonatomic) IBOutlet CalcModel * calculator;
+
+- (IBAction)numberClick:(UIButton *)sender;
+- (IBAction)setOperationBtn:(UIButton *)sender;
+- (IBAction)submitBtn:(UIButton *)obj;
 
 @end
